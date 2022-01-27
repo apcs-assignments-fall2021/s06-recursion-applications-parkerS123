@@ -81,7 +81,39 @@ public class MyMain {
     // Then we need to copy the rest of the array
 
     public static int[] merge(int[] arr1, int[] arr2) {
-        // YOUR CODE HERE
-        return null;
+        int [] newArr = new int [arr1.length + arr2.length];
+        int index = 0;
+        int arr1index = 0;
+        int arr2index = 0;
+
+        while (arr1index < arr1.length && arr2index < arr2.length && index < (arr2.length + arr1.length)) {
+            while (arr1index < arr1.length && arr2index < arr2.length && arr1[arr1index] < arr2[arr2index]) {
+                newArr[index] = arr1[arr1index];
+                arr1index++;
+                index++;
+            }
+            while (arr2index < arr2.length && arr1index < arr1.length&& arr2[arr2index] < arr1[arr1index]) {
+                newArr[index] = arr2[arr2index];
+                arr2index++;
+                index++;
+            }
+        }
+
+        if (arr1index < arr1.length){
+            for (int i = arr1index; i < arr1.length; i++){
+                newArr[index] = arr1[i];
+                index++;
+            }
+        }
+        if (arr2index < arr2.length){
+            for (int j = arr2index; j < arr2.length; j++){
+                newArr[index] = arr2[j];
+                index++;
+            }
+        }
+
+
+
+        return newArr;
     }
 }
